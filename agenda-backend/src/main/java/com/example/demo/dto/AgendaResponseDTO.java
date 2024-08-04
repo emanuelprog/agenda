@@ -1,6 +1,4 @@
-package com.example.demo.dtos.agenda;
-
-import java.time.LocalDateTime;
+package com.example.demo.dto;
 
 public record AgendaResponseDTO(String id, String titulo, String descricao) {
 }

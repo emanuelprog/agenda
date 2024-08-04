@@ -1,11 +1,11 @@
-package com.example.demo.service.agenda;
+package com.example.demo.service;
 
-import com.example.demo.dtos.agenda.Agenda;
-import com.example.demo.dtos.agenda.AgendaRequestDTO;
-import com.example.demo.dtos.agenda.AgendaResponseDTO;
+import com.example.demo.model.Agenda;
+import com.example.demo.dto.AgendaRequestDTO;
+import com.example.demo.dto.AgendaResponseDTO;
 import com.example.demo.exception.BadRequestException;
 import com.example.demo.exception.NotFoundException;
-import com.example.demo.repository.agenda.AgendaRepository;
+import com.example.demo.repository.AgendaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -56,7 +56,7 @@ public class AgendaService {
                     ));
             return new AgendaResponseDTO(agenda.getId(), agenda.getTitulo(), agenda.getDescricao());
         } else {
-            throw new BadRequestException("Não foi possível editar a agenda!");
+            throw new NotFoundException("Nenhuma agenda encontrada!");
         }
     }
 

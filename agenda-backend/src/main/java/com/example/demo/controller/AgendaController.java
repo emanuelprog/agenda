@@ -1,8 +1,8 @@
-package com.example.demo.controller.agenda;
+package com.example.demo.controller;
 
-import com.example.demo.dtos.agenda.AgendaRequestDTO;
-import com.example.demo.dtos.agenda.AgendaResponseDTO;
-import com.example.demo.service.agenda.AgendaService;
+import com.example.demo.dto.AgendaRequestDTO;
+import com.example.demo.dto.AgendaResponseDTO;
+import com.example.demo.service.AgendaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/agenda")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "*")
 public class AgendaController {
 
     private final AgendaService agendaService;
