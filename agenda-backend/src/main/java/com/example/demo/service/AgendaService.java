@@ -47,17 +47,18 @@ public class AgendaService {
     public AgendaResponseDTO editar(String id, AgendaRequestDTO agendaRequestDTO) {
         Optional<Agenda> agendaDB = agendaRepository.findById(id);
 
-        if (agendaDB.isPresent()) {
-            Agenda agenda = agendaRepository.save(
-                    new Agenda(
-                            id,
-                            agendaRequestDTO.titulo(),
-                            agendaRequestDTO.descricao()
-                    ));
-            return new AgendaResponseDTO(agenda.getId(), agenda.getTitulo(), agenda.getDescricao());
-        } else {
+        if (!agendaDB.isPresent()) {
             throw new NotFoundException("Nenhuma agenda encontrada!");
         }
+
+        Agenda agenda = agendaRepository.save(
+                new Agenda(
+                        id,
+                        agendaRequestDTO.titulo(),
+                        agendaRequestDTO.descricao()
+                ));
+
+        return new AgendaResponseDTO(agenda.getId(), agenda.getTitulo(), agenda.getDescricao());
     }
 
     public AgendaResponseDTO deletar(String id) {
